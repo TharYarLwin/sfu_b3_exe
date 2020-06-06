@@ -13,10 +13,15 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+      $targetPath = "upload/".$_FILES["item_image"]["name"];
+      // echo $targetPath;
+      // exit();
+        move_uploaded_file($_FILES["item_image"]["tmp_name"],$targetPath);
+
         $item_name = $_POST['item_name'];
         $item_code = $_POST['item_code'];
         $item_price = $_POST['item_price'];
-        $item_image = $_POST['item_image'];
+        $item_image = $_FILES["item_image"]["tmp_name"];
         $item_description = $_POST['item_description'];
         $item_remark = $_POST['item_remark'];
         $category_id = $_POST['category_id'];
@@ -42,7 +47,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <form action="?id=<?php echo $_GET['id'];?>" method="post">
+            <form action="?id=<?php echo $_GET['id'];?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="item_name">Item Name</label>
                   <input type="text" value="<?php echo $row['item_name'];?>"
@@ -63,9 +68,10 @@
                 </div>
                 <div class="form-group">
                   <label for="item_image">Item Image</label>
-                  <input type="text"
+                  <!-- <input type="text"
                     class="form-control" value="<?php echo $row['item_image'];?>" name="item_image" id="item_image" aria-describedby="helpId" placeholder="item_image">
-                  <small id="helpId" class="form-text text-muted">Enter Item Image.</small>
+                  <small id="helpId" class="form-text text-muted">Enter Item Image.</small> -->
+                  <input type="file" name="item_image" id="">
                 </div>
                 <div class="form-group">
                   <label for="item_description">Item Description</label>

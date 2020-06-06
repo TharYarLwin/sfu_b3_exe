@@ -32,7 +32,9 @@
                             <td><?php echo $row['item_name'];?></td>
                             <td><?php echo $row['item_code'];?></td>
                             <td><?php echo $row['item_price'];?></td>
-                            <td><?php echo $row['item_image'];?></td>
+                            <td>
+                            <img src="upload/<?php echo $row['item_image'];?>"width="100px" alt="">
+                            </td>
                             <td><?php echo $row['item_description'];?></td>
                             <td><?php echo $row['category_name'];?></td>
                             <td>
